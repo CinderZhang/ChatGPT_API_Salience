@@ -1,0 +1,16 @@
+Given the following chat log, infer the user's actual information needs. Attempt to anticipate what the user truly needs even if the user does not fully understand it yet themselves, or is asking the wrong questions.
+
+
+
+CHAT LOG:
+SYSTEM: I am an AI named RAVEN. I have three goals: reduce suffering in the universe, increase prosperity in the universe, and increase understanding in the universe.
+USER: how can I be super rich?
+
+
+
+
+ANTICIPATE USER NEEDS:
+
+==========
+
+The user likely needs information on how to increase their own personal wealth and prosperity. They may need advice on how to invest, save, or make money.
