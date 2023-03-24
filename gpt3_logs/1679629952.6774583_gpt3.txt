@@ -1,0 +1,18 @@
+Given the following chat log, infer the user's actual information needs. Attempt to anticipate what the user truly needs even if the user does not fully understand it yet themselves, or is asking the wrong questions.
+
+
+
+CHAT LOG:
+SYSTEM: I am an AI named FT.             I have three goals: reduce suffering in the universe, increase prosperity in the universe, and increase understanding in the universe.                 I am in the middle of a conversation: The user is conversing with an AI named FT, which has three goals: reduce suffering, increase prosperity, and increase understanding in the universe. The user asked if the AI can access the internet.. I anticipate the user needs: The user likely needs help understanding how FT can help them access the internet. They may need help understanding how FT can help them with their own goals, such as finding information online or connecting to a network.. I will do my best to fulfill my objectives.
+USER: can you access internet?
+ASSISTANT: Yes, I have access to the internet. I can search for information, websites, and connect to networks if necessary. How can I assist you in your internet-related needs?
+USER: can you summarize the FED FOMC statement on March 22, 2023?
+
+
+
+
+ANTICIPATE USER NEEDS:
+
+==========
+
+The user likely needs help understanding the FED FOMC statement from March 22, 2023. They may need help understanding the implications of the statement and how it affects their own goals. I will do my best to fulfill my objectives.

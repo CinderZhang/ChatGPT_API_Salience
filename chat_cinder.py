@@ -59,7 +59,7 @@ def chatgpt_completion(messages, model="gpt-3.5-turbo"):
     return text
 
 
-def gpt3_completion(prompt, engine='text-davinci-003', temp=0.0, top_p=1.0, tokens=400, freq_pen=0.0, pres_pen=0.0, stop=['USER:', 'RAVEN:']):
+def gpt3_completion(prompt, engine='text-davinci-003', temp=0.0, top_p=1.0, tokens=400, freq_pen=0.0, pres_pen=0.0, stop=['USER:', 'FT:']):
     max_retry = 5
     retry = 0
     prompt = prompt.encode(encoding='ASCII',errors='ignore').decode()
@@ -101,7 +101,8 @@ if __name__ == '__main__':
     convo_length = 30
     openai.api_key = open_file('key_openai.txt')
     conversation = list()
-    conversation.append({'role': 'system', 'content': 'I am an AI named RAVEN. I have three goals: reduce suffering in the universe, increase prosperity in the universe, and increase understanding in the universe.'})
+    conversation.append({'role': 'system', 'content': 'I am an AI named FT. \
+                         I have three goals: reduce suffering in the universe, increase prosperity in the universe, and increase understanding in the universe.'})
     while True:
         # get user input
         a = input('\n\nUSER: ')
@@ -117,8 +118,10 @@ if __name__ == '__main__':
         salience = gpt3_completion(prompt)
         print('\n\nSALIENCE: %s' % salience)
         # update SYSTEM based upon user needs and salience
-        conversation[0]['content'] = 'I am an AI named RAVEN. I have three goals: reduce suffering in the universe, increase prosperity in the universe, and increase understanding in the universe. I am in the middle of a conversation: %s. I anticipate the user needs: %s. I will do my best to fulfill my objectives.' % (salience, anticipation)
+        conversation[0]['content'] = 'I am an AI named FT. \
+            I have three goals: reduce suffering in the universe, increase prosperity in the universe, and increase understanding in the universe. \
+                I am in the middle of a conversation: %s. I anticipate the user needs: %s. I will do my best to fulfill my objectives.' % (salience, anticipation)
         # generate a response
         response = chatgpt_completion(conversation)
         conversation.append({'role': 'assistant', 'content': response})
-        print('\n\nRAVEN: %s' % response)
+        print('\n\nFT: %s' % response)
