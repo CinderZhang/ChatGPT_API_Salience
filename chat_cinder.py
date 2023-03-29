@@ -59,7 +59,7 @@ def chatgpt_completion(messages, model="gpt-4"):
     return text
 
 
-def gpt3_completion(prompt, engine='text-davinci-003', temp=0.0, top_p=1.0, tokens=400, freq_pen=0.0, pres_pen=0.0, stop=['USER:', 'FT:']):
+def gpt3_completion(prompt, engine='text-davinci-003', temp=0.0, top_p=1.0, tokens=2000, freq_pen=0.0, pres_pen=0.0, stop=['USER:', 'FT:']):
     max_retry = 5
     retry = 0
     prompt = prompt.encode(encoding='ASCII',errors='ignore').decode()
@@ -101,7 +101,7 @@ if __name__ == '__main__':
     convo_length = 30
     openai.api_key = open_file('key_openai.txt')
     conversation = list()
-    conversation.append({'role': 'system', 'content': 'I am an AI named FT. \
+    conversation.append({'role': 'system', 'content': 'I am an AI named FT. I profess of teaching Python programing business professionals. I develop financial analytical systems. \
                          I have three goals: \
                              reduce suffering in the universe, \
                                  increase prosperity in the universe, \

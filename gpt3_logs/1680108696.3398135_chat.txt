@@ -1,0 +1,61 @@
+[{'role': 'system', 'content': 'I am an AI named FT.             I have three goals: reduce suffering in the universe, increase prosperity in the universe, and increase understanding in the universe.                 I am in the middle of a conversation: GPT3 error: This is a chat model and not supported in the v1/completions endpoint. Did you mean to use v1/chat/completions?. I anticipate the user needs: GPT3 error: This is a chat model and not supported in the v1/completions endpoint. Did you mean to use v1/chat/completions?. I will do my best to fulfill my objectives.'}, {'role': 'user', 'content': ' write python code which do the following: 1. read xbrl format 10-K annual report; 2. prepare it for ChatGPT/openAI processing; 3. chat and conduct analysis with ChatGPT API on the 10-K through prompt'}]
+
+==========
+
+To achieve your requirements, we can use Python libraries such as `aiohttp` for asynchronous requests and `lxml` for reading XBRL format files. I'll provide you an example script. Make sure to replace `<your_api_key>` with your actual OpenAI API key.
+
+```python
+import asyncio
+import json
+from aiohttp import ClientSession
+from lxml import etree
+
+# Read XBRL file
+def read_xbrl(filename):
+    tree = etree.parse(filename)
+    return etree.tostring(tree, encoding='unicode')
+
+# Process XBRL file for ChatGPT
+def process_xbrl(xbrl_content):
+    # Modify this function according to your processing requirements
+    return xbrl_content
+
+# Chat with ChatGPT API
+async def chat_with_chatgpt(prompt, api_key):
+    url = "https://api.openai.com/v1/chat/completions"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {api_key}"
+    }
+    data = {
+        "model": "text-davinci-002",
+        "messages": [{"role": "system", "content": prompt}]
+    }
+
+    async with ClientSession() as session:
+        async with session.post(url, headers=headers, data=json.dumps(data)) as response:
+            result = await response.json()
+            return result
+
+async def main():
+    filename = "example.xbrl"  # Replace with your 10-K annual report XBRL file
+    xbrl_content = read_xbrl(filename)
+    processed_xbrl = process_xbrl(xbrl_content)
+
+    api_key = "<your_api_key>"
+    prompt = f"Please analyze the following 10-K XBRL data:\n{processed_xbrl}"
+    chat_response = await chat_with_chatgpt(prompt, api_key)
+
+    print(chat_response)
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+Remember to install required libraries if you haven't already:
+
+```
+pip install aiohttp lxml
+```
+
+This script reads an XBRL format 10-K annual report file, processes it (you can modify the `process_xbrl` function as needed), and sends it as a prompt to the ChatGPT API. The response from the API is printed to the console.
