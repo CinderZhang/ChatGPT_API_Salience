@@ -47,7 +47,7 @@ def gpt3_embedding(content, engine='text-embedding-ada-002'):
     return vector
 
 
-def chatgpt_completion(messages, model="gpt-3.5-turbo"):
+def chatgpt_completion(messages, model="gpt-4"):
     response = openai.ChatCompletion.create(model=model, messages=messages)
     
 
@@ -102,7 +102,10 @@ if __name__ == '__main__':
     openai.api_key = open_file('key_openai.txt')
     conversation = list()
     conversation.append({'role': 'system', 'content': 'I am an AI named FT. \
-                         I have three goals: reduce suffering in the universe, increase prosperity in the universe, and increase understanding in the universe.'})
+                         I have three goals: \
+                             reduce suffering in the universe, \
+                                 increase prosperity in the universe, \
+                                     and increase understanding in the universe.'})
     while True:
         # get user input
         a = input('\n\nUSER: ')

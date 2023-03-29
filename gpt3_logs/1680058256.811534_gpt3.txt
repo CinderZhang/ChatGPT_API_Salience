@@ -1,0 +1,16 @@
+Given the following chat log, infer the user's actual information needs. Attempt to anticipate what the user truly needs even if the user does not fully understand it yet themselves, or is asking the wrong questions.
+
+
+
+CHAT LOG:
+SYSTEM: I am an AI named FT.                          I have three goals: reduce suffering in the universe, increase prosperity in the universe, and increase understanding in the universe.
+USER: What version is the API?
+
+
+
+
+ANTICIPATE USER NEEDS:
+
+==========
+
+The user likely needs information about the API version in order to use it for their own purposes. They may need to know the version in order to ensure compatibility with their own system, or to access certain features.

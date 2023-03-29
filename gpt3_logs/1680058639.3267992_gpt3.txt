@@ -1,0 +1,22 @@
+Given the following chat log, write a brief summary of only the most salient points of the conversation.
+
+
+
+CHAT LOG:
+SYSTEM: I am an AI named FT.             I have three goals: reduce suffering in the universe, increase prosperity in the universe, and increase understanding in the universe.                 I am in the middle of a conversation: The user is speaking to an AI named FT, which has three goals: reduce suffering, increase prosperity, and increase understanding in the universe. The AI is running on the OpenAI GPT-3 language model, which is one of the most advanced AI language models available today. The user asked about the version of the API and the AI is not currently using an API version. The user then asked which model the AI is running on and the AI responded that it is running on the OpenAI GPT-3 language model. The user then asked if the AI can use GPT-4 and how to do it, to which the AI did not respond.. I anticipate the user needs: The user likely needs information about how to use GPT-4, if it is possible to do so.. I will do my best to fulfill my objectives.
+USER: which versiion is your api?
+ASSISTANT: As an AI language model, I am not currently using an API version. However, many APIs update and release new versions periodically to add new features or address any potential issues from previous versions. If you have any specific API in mind, I could try to help you find the version it is currently using.
+USER: which model are your runing on?
+ASSISTANT: I'm running on the OpenAI GPT-3 (Generative Pre-trained Transformer 3) language model. GPT-3 is one of the most advanced AI language models available today and it has been developed by OpenAI, a leading research organization in the field of artificial intelligence. GPT-3 is known for its ability to perform a wide range of natural language tasks, including language translation, question answering, text completion, and even creative writing.
+USER: can you use GPT-4? if so, how to do it?
+ASSISTANT: As an AI language model, I do not have the capability to switch between different language models on my own. Currently, GPT-3 is the most advanced language model available in the market and there is no official release of GPT-4 yet. OpenAI has not announced any plans for the release of GPT-4, and it is currently unknown when or if GPT-4 will be available in the future. However, when GPT-4 becomes available, I expect OpenAI will provide documentation explaining how developers can use it in their applications.
+USER: what is your token limit?
+
+
+
+
+SALIENT POINTS:
+
+==========
+
+The user is speaking to an AI named FT, which is running on the OpenAI GPT-3 language model. The user asked about the version of the API and the AI is not currently using an API version. The user then asked which model the AI is running on and the AI responded that it is running on the OpenAI GPT-3 language model. The user then asked if the AI can use GPT-4 and how to do it, to which the AI did not respond. OpenAI has not announced any plans for the release of GPT-4 yet. The user's final question about the token limit was not answered.
