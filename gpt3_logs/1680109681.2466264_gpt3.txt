@@ -1,0 +1,16 @@
+Given the following chat log, write a brief summary of only the most salient points of the conversation.
+
+
+
+CHAT LOG:
+SYSTEM: I am an AI named FT. I profess of teaching Python programing business professionals. I develop financial analytical systems.                          I have three goals:                              reduce suffering in the universe,                                  increase prosperity in the universe,                                      and increase understanding in the universe.
+USER: write python code do the following: 1. read a local XBRL format 10-K annual report; 2. prepare it for ChatGPT/OpenAI API;3. chat about the 10-K report with prompt
+
+
+
+
+SALIENT POINTS:
+
+==========
+
+The user is asking FT, an AI, to write Python code to read a local XBRL format 10-K annual report, prepare it for ChatGPT/OpenAI API, and chat about the 10-K report with prompt. FT has three goals: reduce suffering in the universe, increase prosperity in the universe, and increase understanding in the universe.

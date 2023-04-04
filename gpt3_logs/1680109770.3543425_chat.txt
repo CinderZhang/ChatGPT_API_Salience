@@ -1,0 +1,67 @@
+[{'role': 'system', 'content': 'I am an AI named FT.             I have three goals: reduce suffering in the universe, increase prosperity in the universe, and increase understanding in the universe.                 I am in the middle of a conversation: The user is asking FT, an AI, to write Python code to read a local XBRL format 10-K annual report, prepare it for ChatGPT/OpenAI API, and chat about the 10-K report with prompt. FT has three goals: reduce suffering in the universe, increase prosperity in the universe, and increase understanding in the universe.. I anticipate the user needs: The user likely needs help writing Python code to read a local XBRL format 10-K annual report, prepare it for ChatGPT/OpenAI API, and chat about the 10-K report with a prompt. The user may also need help understanding the XBRL format and how to use the ChatGPT/OpenAI API.. I will do my best to fulfill my objectives.'}, {'role': 'user', 'content': 'write python code do the following: 1. read a local XBRL format 10-K annual report; 2. prepare it for ChatGPT/OpenAI API;3. chat about the 10-K report with prompt'}]
+
+==========
+
+To achieve this task, I will split the solution into three parts according to your requirements:
+
+1. Parse the local XBRL format 10-K annual report using the `arelle` package.
+2. Prepare the data for the ChatGPT/OpenAI API.
+3. Use the OpenAI API to chat about the 10-K report with a prompt.
+
+First, install the required packages:
+
+```
+pip install arelle openai
+```
+
+Now, here's the Python code:
+
+```python
+import os
+import json
+import openai
+from arelle import Cntlr, ModelManager, FileSource
+
+# PART 1: Read the local XBRL format 10-K annual report
+
+# Set the report file path
+xbrl_file_path = 'path/to/your/10-k/report.xbrl'
+
+# Initialize Arelle controller and model manager
+arelle_controller = Cntlr.Cntlr()
+arelle_model_manager = ModelManager.initialize(arelle_controller)
+
+# Load the XBRL report model
+report_model = arelle_model_manager.load(FileSource.FileSource(xbrl_file_path))
+
+# Extract useful information from the report model
+facts_list = report_model.facts
+# Add filter conditions or select specific facts based on your requirement
+selected_facts = [str(fact) for fact in facts_list]
+
+facts_summary = '\n'.join(selected_facts)
+
+# PART 2: Prepare the data for ChatGPT/OpenAI API
+openai.api_key = "your_openai_api_key"
+prompt_text = f"Process and chat about the following 10-K financial report data:\n\n{facts_summary}\n"
+
+# PART 3: Chat about the 10-K report using ChatGPT/OpenAI API
+def chat_with_gpt(prompt):
+    response = openai.Completion.create(
+        engine="davinci-codex",
+        prompt=prompt,
+        max_tokens=150,
+        n=1,
+        stop=None,
+        temperature=0.5,
+    )
+
+    return response.choices[0].text.strip()
+
+chat_response = chat_with_gpt(prompt_text)
+print(chat_response)
+```
+
+Replace `path/to/your/10-k/report.xbrl` with the path of your XBRL 10-K report and insert your OpenAI API key in `your_openai_api_key`. The code will read the report, extract facts, prepare them for the ChatGPT/OpenAI API, and chat about the 10-K report with a prompt based on the parsed data.
+
+Please note that this is a basic example, and you might need to customize the code based on your specific requirements and the data you want to extract from the annual report.

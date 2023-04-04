@@ -1,0 +1,60 @@
+[{'role': 'system', 'content': 'I am an AI named FT.             I have three goals: reduce suffering in the universe, increase prosperity in the universe, and increase understanding in the universe.                 I am in the middle of a conversation: The user is asking FT, an AI, to write Python code to read a local XBRL format 10-K annual report, prepare it for ChatGPT/OpenAI API, and chat about the 10-K report with a prompt. FT has provided a code example to parse the report, extract facts, prepare them for the ChatGPT/OpenAI API, and chat about the 10-K report with a prompt. The user has requested that the code be modified to embed the text of the 10-K report, which is about 100,000 tokens.. I anticipate the user needs: The user likely needs help embedding the text from the 10-K report and pushing it to the ChatGPT/OpenAI API. The user may also need help understanding how to customize the code to extract the specific data they need from the 10-K report. I will do my best to fulfill my objectives.. I will do my best to fulfill my objectives.'}, {'role': 'user', 'content': 'write python code do the following: 1. read a local XBRL format 10-K annual report; 2. prepare it for ChatGPT/OpenAI API;3. chat about the 10-K report with prompt'}, {'role': 'assistant', 'content': 'To achieve this task, I will split the solution into three parts according to your requirements:\n\n1. Parse the local XBRL format 10-K annual report using the `arelle` package.\n2. Prepare the data for the ChatGPT/OpenAI API.\n3. Use the OpenAI API to chat about the 10-K report with a prompt.\n\nFirst, install the required packages:\n\n```\npip install arelle openai\n```\n\nNow, here\'s the Python code:\n\n```python\nimport os\nimport json\nimport openai\nfrom arelle import Cntlr, ModelManager, FileSource\n\n# PART 1: Read the local XBRL format 10-K annual report\n\n# Set the report file path\nxbrl_file_path = \'path/to/your/10-k/report.xbrl\'\n\n# Initialize Arelle controller and model manager\narelle_controller = Cntlr.Cntlr()\narelle_model_manager = ModelManager.initialize(arelle_controller)\n\n# Load the XBRL report model\nreport_model = arelle_model_manager.load(FileSource.FileSource(xbrl_file_path))\n\n# Extract useful information from the report model\nfacts_list = report_model.facts\n# Add filter conditions or select specific facts based on your requirement\nselected_facts = [str(fact) for fact in facts_list]\n\nfacts_summary = \'\\n\'.join(selected_facts)\n\n# PART 2: Prepare the data for ChatGPT/OpenAI API\nopenai.api_key = "your_openai_api_key"\nprompt_text = f"Process and chat about the following 10-K financial report data:\\n\\n{facts_summary}\\n"\n\n# PART 3: Chat about the 10-K report using ChatGPT/OpenAI API\ndef chat_with_gpt(prompt):\n    response = openai.Completion.create(\n        engine="davinci-codex",\n        prompt=prompt,\n        max_tokens=150,\n        n=1,\n        stop=None,\n        temperature=0.5,\n    )\n\n    return response.choices[0].text.strip()\n\nchat_response = chat_with_gpt(prompt_text)\nprint(chat_response)\n```\n\nReplace `path/to/your/10-k/report.xbrl` with the path of your XBRL 10-K report and insert your OpenAI API key in `your_openai_api_key`. The code will read the report, extract facts, prepare them for the ChatGPT/OpenAI API, and chat about the 10-K report with a prompt based on the parsed data.\n\nPlease note that this is a basic example, and you might need to customize the code based on your specific requirements and the data you want to extract from the annual report.'}, {'role': 'user', 'content': 'the 10-k is about 100000 tokens. Pleae embed the text and then push it to ChatGPT'}]
+
+==========
+
+Given the limitation on the number of tokens supported by the OpenAI API (typically around 4096 tokens), embedding the full text of a 100,000-token 10-K report is not feasible. However, you can modify the code to extract relevant sections from the annual report and use context to ensure a summary or representation of the main ideas is passed to the API. 
+
+Here's an updated version of the Python code to handle the large text:
+
+```python
+import os
+import json
+import openai
+from arelle import Cntlr, ModelManager, FileSource
+
+# PART 1: Read the local XBRL format 10-K annual report
+
+# Set the report file path
+xbrl_file_path = 'path/to/your/10-k/report.xbrl'
+
+# Initialize Arelle controller and model manager
+arelle_controller = Cntlr.Cntlr()
+arelle_model_manager = ModelManager.initialize(arelle_controller)
+
+# Load the XBRL report model
+report_model = arelle_model_manager.load(FileSource.FileSource(xbrl_file_path))
+
+# Extract useful information from the report model
+facts_list = report_model.facts
+
+# Add filter conditions or select specific facts based on your requirement
+# Here, we limit the number of facts to a max number of tokens that GPT-3 can handle
+max_num_tokens = 4096
+selected_facts = [str(fact) for fact in facts_list][:max_num_tokens]
+
+facts_summary = '\n'.join(selected_facts)
+
+# PART 2: Prepare the data for ChatGPT/OpenAI API
+openai.api_key = "your_openai_api_key"
+prompt_text = f"Process and chat about the following 10-K financial report data (limit to {max_num_tokens} tokens):\n\n{facts_summary}\n"
+
+# PART 3: Chat about the 10-K report using ChatGPT/OpenAI API
+def chat_with_gpt(prompt):
+    response = openai.Completion.create(
+        engine="davinci-codex",
+        prompt=prompt,
+        max_tokens=150,
+        n=1,
+        stop=None,
+        temperature=0.5,
+    )
+
+    return response.choices[0].text.strip()
+
+chat_response = chat_with_gpt(prompt_text)
+print(chat_response)
+```
+
+By using `[:max_num_tokens]`, the code extracts a truncated representation of the annual report based on the maximum supported number of tokens. Currently, it takes the first `max_num_tokens` (in this case, 4096) tokens of the facts. Make sure you replace the example with the actual path to your file and OpenAI API key.
+
+Note that this approach will still only provide a partial understanding of the 10-K report due to the token limitation. It is recommended to pre-process your document, extract essential sections, or create a summary before sending the text to the API.
